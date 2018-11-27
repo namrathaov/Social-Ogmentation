@@ -67,7 +67,19 @@
     </div>
     <div id="whiteblock" class="jumbotron col-md-12">
         <script>
-
+            var data1 = [{"playerName":"p1","gameScores":[{"gameScore":20,"gameName":"game2"},{"gameScore":10,"gameName":"game1"},{"gameScore":9,"gameName":"game3"}],"totalScore":39},{"playerName":"p2","gameScores":[{"gameScore":20,"gameName":"game2"},{"gameScore":8,"gameName":"game3"}],"totalScore":"28"}];
+            var data2 = "";
+            for(var i =0; i<data1.length; i++){
+                data2+="{\"playerName\":\""+data1[i]["playerName"]+"\",";
+                for(var j =0; j<data1[i]["gameScores"].length; j++) {
+                    var gamename = data1[i]["gameScores"][j];
+                    data2+="\""+(gamename["gameName"].toString()+'":"'+gamename["gameScore"].toString()+"\",");
+                }
+                data2=data2.substring(0,data2.length-1)+"},"
+            }
+            var data = ("["+data2.substring(0,data2.length-1)+"]");
+            data = JSON.parse(data);
+            console.log(data);
             var margin = {top: 20, right: 20, bottom: 30, left: 40},
                 width = 960 - margin.left - margin.right,
                 height = 300 - margin.top - margin.bottom;
@@ -96,59 +108,18 @@
                 .append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-            var data = [
-                {
-                    "State": "Player 1",
-                    "Game 1": 10,
-                    "Game 2": 12,
-                    "Game 3": 35
-                },{
-                    "State": "Player 2",
-                    "Game 1": 8,
-                    "Game 2": 12,
-                    "Game 3": 5
-                },{
-                    "State": "Player 3",
-                    "Game 1": 8,
-                    "Game 2": 12,
-                    "Game 3": 5
-                },{
-                    "State": "Player 4",
-                    "Game 1": 8,
-                    "Game 2": 12,
-                    "Game 3": 5
-                },{
-                    "State": "Player 5",
-                    "Game 1": 8,
-                    "Game 2": 12,
-                    "Game 3": 5
-                },{
-                    "State": "Player 6",
-                    "Game 1": 8,
-                    "Game 2": 12,
-                    "Game 3": 5
-                },{
-                    "State": "Player 7",
-                    "Game 1": 8,
-                    "Game 2": 12,
-                    "Game 3": 5
-                },{
-                    "State": "Player 8",
-                    "Game 1": 8,
-                    "Game 2": 12,
-                    "Game 3": 5
-                }];
-            color.domain(d3.keys(data[0]).filter(function(key) { return key !== "State"; }));
+            color.domain(d3.keys(data[0]).filter(function(key) { return key !== "playerName"; }));
 
             data.forEach(function(d) {
                 var y0 = 0;
+                console.log(d);
                 d.ages = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
                 d.total = d.ages[d.ages.length - 1].y1;
             });
 
             data.sort(function(a, b) { return b.total - a.total; });
 
-            x.domain(data.map(function(d) { return d.State; }));
+            x.domain(data.map(function(d) { return d.playerName; }));
             y.domain([0, d3.max(data, function(d) { return d.total; })]);
 
             svg.append("g")
@@ -164,20 +135,20 @@
                 .attr("y", 6)
                 .attr("dy", ".71em")
                 .style("text-anchor", "end")
-                .text("Population");
+                .text("Game Score");
 
             var state = svg.selectAll(".state")
                 .data(data)
                 .enter().append("g")
                 .attr("class", "g")
-                .attr("transform", function(d) { return "translate(" + x(d.State) + ",0)"; });
+                .attr("transform", function(d) { return "translate(" + x(d.playerName) + ",0)"; });
 
             state.selectAll("rect")
                 .data(function(d) { return d.ages; })
                 .enter().append("rect")
                 .attr("width", x.rangeBand())
-                .attr("y", function(d) { return y(d.y1); })
-                .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+                .attr("y", function(d) { if(isNaN(y(d.y1))) return y(d.y0); return y(d.y1); })
+                .attr("height", function(d) {  if(isNaN(y(d.y1)))  return y(d.y0); return y(d.y0) - y(d.y1); })
                 .style("fill", function(d) { return color(d.name); });
 
             var legend = svg.selectAll(".legend")
