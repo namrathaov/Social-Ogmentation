@@ -14,7 +14,7 @@
     <meta name="author" content=""><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 
-    <title>My new webapp</title>
+    <title>Social Ogmentation</title>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -29,36 +29,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <style><%@include file="/WEB-INF/jsp/styling.css"%></style>
-    <style>
-        #chart-area svg {
-            margin:auto;
-            display:inherit;
-        }
-        .money-cell { text-align: right; }
-        h2 { text-align: center; }
-        #leg1 { background-color: #66c2a5; }
-        #leg2 { background-color: #fc8d62; }
-        #leg3 { background-color: #8da0cb; }
-        #leg4 { background-color: #e78ac3; }
-        #leg5 { background-color: #a6d854; }
-        #avLeg { background-color: grey; }
-        @media screen and (min-width: 768px) {
-            table { margin-top: 100px; }
-        }
-        @media screen and (min-width: 768px) {
-            table { margin-top: 100px; }
-        }
-        #page-main { margin-top: 10px; }
-        #controls { margin-bottom: 20px; }
-        #play-button {
-            margin-top: 10px;
-            width: 100px;
-        }
-        #slider-div {
-            width:300px;
-            float:right;
-        }
-    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.10/d3.min.js"></script>
 </head>
 <body>
 <div class="container" style="padding-bottom: 150px;">
@@ -72,7 +43,12 @@
                 <li><a href="visualization" >Visualizations</a></li>
                 <li><a href="summary" >Summary</a></li>
 
-                <li><a href="login" >Login</a></li>
+                <c:if test="${username eq error}">
+                    <li><a href="login" >Login</a></li>
+                </c:if>
+                <c:if test="${username ne error}">
+                    <li><a href="summary">${username}</a></li>
+                </c:if>
             </ul>
         </nav>
     </div>
@@ -80,6 +56,7 @@
 
 <!-- External JS libraries -->
 <script src="https://d3js.org/d3.v5.min.js"></script>
+        <!--
 <script>
     dataset = {
         "children": [{"Name":"Skill 1","Count":3},
@@ -156,6 +133,55 @@
 
     d3.select(self.frameElement)
         .style("height", diameter + "px");
-</script></div></div>
+
+
+</script> -->
+        <div id="game">
+        <h3>Try playing.. </h3></div>
+        <script>$.ajax({
+        url : '<c:url value='http://localhost:8080/api/getSuggestedGames?playername=${username}'/>',
+        type : 'GET',
+        success : function(data) {
+            console.log(data);
+            var k = '<ul>';
+            data = data.substring(1,data.length-1);
+            var d = data.split(",");
+            console.log(d.length);
+            var k ="<ul>";
+            for(var i = 0; i< d.length; i++){
+                k+="<li><a href=''>"+(d[i].split(":")[1]).substring(1,d[i].split(":")[1].length-1)+"</a></li>";
+            }
+            k+='</ul>';
+            $('#game').append(k);
+        },
+        error : function(request,error)
+        {
+            alert("Request: "+JSON.stringify(request));
+        }
+    });</script>
+                <div id="player">
+                <h3>Try playing with.. </h3></div>
+            <script>$.ajax({
+                url : '<c:url value='http://localhost:8080/api/getSuggestedPlayers?playername=${username}'/>',
+                type : 'GET',
+                success : function(data) {
+                    console.log(data);
+                    var k = '<ul>';
+                    data = data.substring(1,data.length-1);
+                    var d = data.split(",");
+                    console.log(d.length);
+                    var k ="<ul>";
+                    for(var i = 0; i< d.length; i++){
+                        k+="<li><a href=''>"+(d[i].split(":")[1]).substring(1,d[i].split(":")[1].length-1)+"</a></li>";
+                    }
+                    k+='</ul>';
+                    $('#player').append(k);
+                },
+                error : function(request,error)
+                {
+                    alert("Request: "+JSON.stringify(request));
+                }
+            });</script>
+    </div></div>
 </body>
 </html>

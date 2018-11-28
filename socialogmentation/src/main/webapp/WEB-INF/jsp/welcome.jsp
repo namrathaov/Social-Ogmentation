@@ -14,9 +14,10 @@
     <meta name="author" content=""><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 
-    <title>My new webapp</title>
+    <title>Social Ogmentation</title>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.10/d3.min.js"></script>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -29,37 +30,9 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <style><%@include file="/WEB-INF/jsp/styling.css"%></style>
-    <style>
-        #chart-area svg {
-            margin:auto;
-            display:inherit;
-        }
-        .money-cell { text-align: right; }
-        h2 { text-align: center; }
-        #leg1 { background-color: #66c2a5; }
-        #leg2 { background-color: #fc8d62; }
-        #leg3 { background-color: #8da0cb; }
-        #leg4 { background-color: #e78ac3; }
-        #leg5 { background-color: #a6d854; }
-        #avLeg { background-color: grey; }
-        @media screen and (min-width: 768px) {
-            table { margin-top: 100px; }
-        }
-        @media screen and (min-width: 768px) {
-            table { margin-top: 100px; }
-        }
-        #page-main { margin-top: 10px; }
-        #controls { margin-bottom: 20px; }
-        #play-button {
-            margin-top: 10px;
-            width: 100px;
-        }
-        #slider-div {
-            width:300px;
-            float:right;
-        }
-    </style>
+
 </head>
+
 <body>
 <div class="container" style="padding-bottom: 150px;">
 
@@ -71,8 +44,13 @@
                 </li>
                 <li><a href="visualization" >Visualizations</a></li>
                 <li><a href="summary" >Summary</a></li>
+                <c:if test="${username eq error}">
+                    <li><a href="login" >Login</a></li>
+                </c:if>
+                <c:if test="${username ne error}">
+                    <li><a href="summary">${username}</a></li>
+                </c:if>
 
-                <li><a href="login" >Login</a></li>
             </ul>
         </nav>
     </div>
