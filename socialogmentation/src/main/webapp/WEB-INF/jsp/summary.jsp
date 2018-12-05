@@ -40,18 +40,14 @@
                 <li>
                     <a href="home" >Home</a>
                 </li>
-                <li><a href="visualization" >Visualizations</a></li>
-                <li><a href="summary" >Summary</a></li>
-                <c:if test="${username eq error}">
-                    <li><a href="login" >Login</a></li>
-                </c:if>
-                <c:if test="${username ne error}">
-                    <li><a href="summary">${username}</a></li>
-                </c:if>
+                <li><a href="visualization" >Action Model</a></li>
+                <li><a href="summary" >Visualization</a></li>
+                <li><a href="recommend" >Recommendations</a></li>
             </ul>
         </nav>
     </div>
     <div id="whiteblock" class="jumbotron col-md-12">
+        <h3>Each player's progress in learning Java against others through game scores are displayed in the stacked chart below:</h3>
         <script>$.ajax({
             url : '<c:url value='http://localhost:8080/api/getGameScoreForUsers'/>',
             type : 'GET',
@@ -78,7 +74,7 @@
                 .rangeRound([height, 0]);
 
             var color = d3.scale.ordinal()
-                .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+                .range(["#ffd54f", "#64b5f6", "#1976d2", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
             var xAxis = d3.svg.axis()
                 .scale(x)

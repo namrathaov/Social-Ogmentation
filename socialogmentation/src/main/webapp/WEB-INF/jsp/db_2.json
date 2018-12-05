@@ -1,0 +1,104 @@
+{
+ "players":[
+  
+   {  
+      "playerName":"p1",
+      "gameScores":[  
+         {  
+            "gameScore":30,
+            "gameName":"game1",
+	    "game_actions":[{
+			"act_name":"right",
+			"action_count": 10		
+		},
+		{
+			"act_name":"left",
+			"action_count": 8		
+		},
+		{
+			"act_name":"top",
+			"action_count": 2		
+		},
+		{
+			"act_name":"down",
+			"action_count": 9		
+		}
+	    ]
+         },
+         {  
+            "gameScore":20,
+            "gameName":"game2",
+	    "game_actions":[{
+			"act_name":"right",
+			"action_count": 4		
+		},
+		{
+			"act_name":"left",
+			"action_count": 9		
+		},
+		{
+			"act_name":"top",
+			"action_count": 6		
+		},
+		{
+			"act_name":"down",
+			"action_count": 8		
+		}
+	    ]	    
+         }
+      ],
+      "totalScore":50,
+      "total_actions": 80
+   },
+   {  
+      "playerName":"p2",
+      "gameScores":[  
+         {  
+            "gameScore":20,
+            "gameName":"game2",
+	    "game_actions":[{
+			"act_name":"right",
+			"action_count": 10		
+		},
+		{
+			"act_name":"left",
+			"action_count": 18		
+		},
+		{
+			"act_name":"top",
+			"action_count": 23		
+		},
+		{
+			"act_name":"down",
+			"action_count": 45		
+		}
+	    ]
+         },
+	{  
+            "gameScore":35,
+            "gameName":"game3",
+	    "game_actions":[{
+			"act_name":"right",
+			"action_count": 10		
+		},
+		{
+			"act_name":"left",
+			"action_count": 18		
+		},
+		{
+			"act_name":"top",
+			"action_count": 23		
+		},
+		{
+			"act_name":"down",
+			"action_count": 45		
+		}
+	    ]
+         }
+	
+      ],
+      "totalScore":55	,
+      "total_actions": 40
+   }
+ ]
+}

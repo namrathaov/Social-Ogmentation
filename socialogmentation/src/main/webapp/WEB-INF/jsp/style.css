@@ -1,0 +1,33 @@
+html, body{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  float: center;
+}
+
+#full2, #full1{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  float : left;
+}
+
+#container, #container2{
+  width: 33%;
+  height: 70%;
+  margin: 0;
+  padding: 0;
+  float: left
+}
+
+
+#container5, #container4, #container3{
+  width: 33%;
+  height: 60%;
+  margin: 0;
+  padding: 0;
+  float: left
+}
+

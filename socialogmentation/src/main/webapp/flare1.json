@@ -1,0 +1,45 @@
+{
+    "name": "flare",
+    "children": [
+     {
+      "name": "Arpit",
+      "children": [
+       {
+        "name": "GamesPlayed",
+        "children": [
+         {"name": "Game1", "size": 3938},
+         {"name": "Game2", "size": 3812},
+         {"name": "Game3", "size": 6714}
+        ]
+       }
+    ]
+},
+       {
+        "name": "Namratha",
+        "children": [
+         {
+          "name": "GamesPlayed",
+          "children": [
+           {"name": "Game1", "size": 1000},
+           {"name": "Game2", "size": 5000},
+           {"name": "Game3", "size": 4500}
+          ]
+         }
+      ]
+     },
+
+       {
+        "name": "Kunal",
+        "children": [
+         {
+          "name": "GamesPlayed",
+          "children": [
+           {"name": "Game1", "size": 4900},
+           {"name": "Game2", "size": 8000},
+           {"name": "Game3", "size": 9000}
+          ]
+         }
+      ]
+     }
+    ]
+}

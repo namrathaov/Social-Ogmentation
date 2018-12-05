@@ -42,4 +42,10 @@ public class HomeController {
 		model.put("username", this.username);
 		return "summary";
 	}
+
+	@RequestMapping("/recommend")
+	public String recommendResults(HttpServletRequest request, Map<String, Object> model) {
+		model.put("username", this.username);
+		return "recommend";
+	}
 }
