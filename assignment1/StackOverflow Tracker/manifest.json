@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "StackOverflow Activity Tracker",
+  "version": "1",
+  "description": "Track user activity on StackOverflow",
+  "permissions": ["tabs","storage","https://stackoverflow.com/*","http://localhost/*","https://localhost/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://stackoverflow.com/*","https://localhost/*"],
+      "js": ["jquery-2.1.3.js","jquery-2.1.3.min.js","content.js"]
+    }
+  ],
+  "browser_action": {
+    "default_icon": "tab-icon.png"
+  }
+}

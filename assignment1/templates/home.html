@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>Home page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="container">
+      <input type="hidden" id="username" value="{{ id }}" />
+      <h3>Welcome {{ name }}!
+      <br><br> You last logged in on: {{ last_login_date }} <h3>
+    </div><b>
+	View StackOverflow Here: <a id="stackoverflow" href="https://stackoverflow.com/questions/tagged/java?sort=frequent&pageSize=15"> Stack Overflow - Java </a><br><br>
+  Your profile: <a href="/profile">Your profile is available here !</a><br><br>
+  Your reading highlights: <a href="/highlights">Click here to view your Reading Highlights!</a><br><br>
+
+  About Stack Overflow Activity Tracker:<br>
+  Chart to visualize user behavior on Stack Overflow:<br><h3>
+</b>1. linksvisited:</h3> linkvisited event is recognized as those events that a user navigates from one hyperlink to another. Count of links visited by a user helps in understanding the breadth of user's interest in using StackOverflow for Java.<br>
+Intention of a user behind using Stack Overflow can be drawn by knowing the number of links a user visits. <br>
+For example: If the user frequently visits multiple Java-related questions, it could mean that the user is either new to Java or is currently working on a Java project that needs constant learning.<br>
+On the other hand, if the user has visited Stack Overflow only once in a long time, it could mean that the user has prior Java knowledge or user is not working on a Java project. 
+<h3>2. questionsandanswers:</h3> questions and answers event are recognized as an event when a user posts an answer to a question or a question who's answer he is looking for. Important part of StackOverflow community is to actively share and gain knowledge by asking questions and posting answers that a user is familiar with. <br>
+This component has more weightage as a user is not only contributing to expansion of Stack Overflow Knowledge Base as well as his skill in Java. His/her interest to help and encourage other Java developers.
+<h3>3. upvotecount:</h3> upvote is an event that a user marks on the website to indicate favorability and usefulness of the answer. This behavior is tracked to analyze to what extent does a user finds Stack Overflow's Java-based questions and answers useful. How helpful did a user think StackOverflow is. <br>
+<h3>4. total time logged:</h3> The amount of time a user is logged on in StackOverflow can say a lot about a user, especially with other behaviors tracked above.
+A user who spends less time on Stack Overflow, has high number of links visited, questions, answers and votes may mean that this user visits stackoverflow regulary, is proud to be part of the community and finds the application very useful.
+On the other hand, a user may log days on stackoverflow without any activity, this could mean that a user has left Stack Overflow unattended and may not find Stack Overflow engaging enough.<br>
+<h3>5. text highlights:</h3> Some users that I have noticed highlight text while reading content on StackOverflow. Some Java questions may be hard to understand, user invests certain time understanding some answers by highlighting text. Another use case for this tracked behavior is a user may select text to copy and paste into his personal notes for later reference or finds it important information to highlight. The selected text can also be code snippets that could be used in projects and assignments.
+
+<p>The chart represents total activity that a user finds useful through various behaviors. The chart gives an idea of percentage of activities the user has performed over time. Primary involvement of the user can be drawn from the chart at any point in time.
+
+<h2>Insights that can be drawn from above interactive chart for a user:</h2>
+<br>
+1. The chart's major trend lies in the time dropdown. By selecting different times from the dropdown, a user can understand which period in the day he/she is most productive. Productivity to a user could mean browsing through StackOverflow's Java related questions. 
+If a user is highly active during the night, this user may be a night person when it comes to learning Java or the person is interested in learning Java as a non-academic skill and hence invests time studying Java during the night time.
+If a user is highly active during the day, this user may be using Java in an academic project or a work project. The user finds StackOverflow very helpful in project development, fixing bugs, learning new concepts, etc.
+This helps in understanding overall intention of user using StackOverflow based on time. <br><br>
+2. Apart from viewing the amount of total activity during certain time of the day, a user can also understand which activities are performed most during what time of the day. This is helpful in the sense that, a user may be busy through the day while using StackOverflow's information, but at a later point, the user is available to contribute through answers and upvotes rather than just exploring various links in StackOverflow's knowledge base. This trend can be visualized by looking at the chart during different times in a day from morning to night and back to morning.<br><br>
+3. A user maybe gaining more kowledge during a certain time of the day when he is browsing through various links and upvoting answers and questions that he found useful. A user maybe sharing more knowledge at a different instance of the day, this behavioral trend means that a user is not learning new information at this time, but is contributing with the skill he/she already has about a Java topic. By selecting all 24 hours in a day, a user's behavior can be visualized to interpret the way in which a user has involved himself in StackOverflow. <br>
+
+<h3>Examples: </h3>
+<b>User aaa</b> in the initial data has spent about 9700 seconds on stackoverflow. And with the time dropdown, it can be seen that user is most active from 9-12pm. During this period, his major activities are links visited with negligible upvotes and questions/answers. This can be interpreted that from 10pm to 2am, the user reads about Java knowledge and is exploring new concepts. This is interpreted because the user has not made many reading notes even though he has spent comparable amount of time on Stack Overflow.
+The user has spent most time exploring different questions and information from 1 to 3am. It also means that user is inactive through the day and uses StackOverflow towards the night. This means that user aaa may be working on an academic assignment or is learning Java for a personal experience or to improve Java skills. The user is not using Stack Overflow during the day means that the user is not working on a Java Project during work time. (9-5pm).
+<br>
+<b>User bbb</b> is most active during 10 - 4pm which means the user may be a student learning Java or a work employee working on a Java project. The user has spent about 3800 seconds on StackOverflow and has made a good number of reading highlights. This could mean that a student has an upcoming exam related to certain Java topics and hence the student is looking for specific content and making notes accordingly. It shows that the user is a day person with a decent focus on Java unlike User aaa who is exploring Java as a personal interest.
+<b>User ccc</b> is somewhat active from 12am to 4am with minimal exploration of Java topics on StackOverflow. The user's primary activity is links. The user is not active at any other time during the day. User ccc may have just been introduced to the topic but not to a very large extent. Another important insight that can be drawn from User ccc behavior is that the user may have been exploring Java topics and got distracted or has fallen asleep because the user has logged about 9000 seconds during which a user would have more activity than ccc. 
+User ccc is a passive user whereas users aaa and bbb are active users.
+</p>
+<h2>References:</h2><br>
+1. <a href="https://d3js.org/">D3.js https://d3js.org/</a><br>
+2. <a href="https://github.com/d3/d3/wiki/gallery">Sample charts: https://github.com/d3/d3/wiki/gallery</a><br>
+3. <a href="https://www.youtube.com/watch?v=ZVGwqnjOKjk">New Boston - Python Flask tutorial</a><br>
+4. <a href="https://developer.chrome.com/extensions"> Chrome Developer Extensions</a><br>
+5. <a href="https://stackoverflow.com/">Stack Overflow</a><br>
+6. <a href="w3schools.com/"> W3 Schools </a><br>
+7. <a href="https://serverfault.com/questions/9708/what-is-a-pem-file-and-how-does-it-differ-from-other-openssl-generated-key-file">SSL certificate</a><br>
+8. <a href="https://docs.python.org/3/"> Python Documentation</a><br>
+
+<h3>Logout here : </h3><a href="/logout">Logout</a><br><br>
+  </body>
+</html>

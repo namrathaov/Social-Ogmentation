@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>Login page</title>
+  </head>
+  <body>
+    <div>
+      <h1>Please login</h1>
+      <br>
+      <form method="post"><br>
+        <input type="text" name="username" value="{{ request.form.username }}"><br><br>
+         <input type="password" name="password" value="{{ request.form.password }}"><br><br>
+        <input type="submit" value="Login"><br><br>
+		<a href="/index"> Sign up here!</a><br>
+      </form>
+      {% if error %}
+        <p class="error">{{ error }}
+      {% endif %}
+    </div>
+  </body>
+</html>
